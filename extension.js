@@ -94,7 +94,7 @@ let Indicator = new Lang.Class({
 
 });
 
-let button, indicator;
+let indicator;
 
 function init() {
 	indicator = new Indicator();
