@@ -41,7 +41,17 @@ let Indicator = new Lang.Class({
 			track_hover: false });
 
 		this.icon = new St.Icon({ icon_name: 'ac-adapter-symbolic',
-			style_class: 'system-status-icon-blink' });
+			style_class: 'system-status-icon' });
+
+		let transition = new Clutter.PropertyTransition();
+		transition.set_property_name('opacity');
+		transition.set_from(0);
+		transition.set_to(255);
+		transition.set_duration(1000);
+		transition.set_repeat_count(1);
+		transition.set_progress_mode(Clutter.AnimationMode.EASE_IN_OUT_CUBIC);
+		this.icon.transition = transition;
+		this.icon.add_transition('opacityAnimation', transition);
 
 		this.button.set_child(this.icon);
 
@@ -60,13 +70,25 @@ let Indicator = new Lang.Class({
 
     _sync: function() {
         let visible = this._proxy.Online;
+		let transition = this.icon.transition;
+
 		log('ACPowerIndicator: sync, visible: '  + visible);
         if (visible) {
+			transition.stop();
+			transition.set_repeat_count(1);
+			transition.set_from(0);
+			transition.set_to(255);
+			transition.set_auto_reverse(false);
         	this.icon.icon_name = this._proxy.IconName;
-			this.icon.style_class =  'system-status-icon';
+			transition.start();
         } else {
+			transition.stop();
+			transition.set_repeat_count(-1);
+			transition.set_from(0);
+			transition.set_to(255);
+			transition.set_auto_reverse(true);
             this.icon.icon_name = 'battery-empty-symbolic';
-			this.icon.style_class =  'system-status-icon-alert';
+			transition.start();
         }
     },
 

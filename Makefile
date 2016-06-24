@@ -1,7 +1,7 @@
 # Basic Makefile
 
 UUID = ac_adapter_indicator@nowhere.com
-BASE_MODULES = extension.js  metadata.json  stylesheet.css
+BASE_MODULES = extension.js  metadata.json
 EXTRA_MODULES = 
 EXTRA_MEDIA = 
 TOLOCALIZE =  
