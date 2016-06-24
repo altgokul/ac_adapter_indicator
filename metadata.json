@@ -1,0 +1,1 @@
+{"uuid": "ac_adapter_indicator@nowhere.com", "description": "Shows whether ac power is connected", "shell-version": ["3.20.2", "etc"], "name": "ac-adapter-indicator"}

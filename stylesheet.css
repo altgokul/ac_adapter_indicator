@@ -1,0 +1,26 @@
+@keyframes system-status-icon-blink-kf {
+  from { -gtk-icon-transform: scale(0.5); }
+  to { -gtk-icon-transform: scale(1.2); }
+}
+
+
+@keyframes system_status_needs_attention_kf {
+    0% {background-image: linear-gradient(to bottom, #fafafa, #ededed 40%,  #e0e0e0); }
+    /* can't do animation-direction, so holding the color on two keyframes */
+    30% {background-image: linear-gradient(to bottom, red); }
+    90% {background-image: linear-gradient(to bottom, white); }
+    100% {background-image: linear-gradient(to bottom, #fafafa, #ededed 40%,  #e0e0e0); }
+}
+
+
+.system-status-icon-alert {
+  /*icon-size: 1.09em;
+  padding: 0 5px;*/
+  animation-name: system-status-icon-blink-kf;
+  animation-time: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  animation: system_status_needs_attention_kf 3s ease-in-out;
+  animation-iteration-count: infinite; 
+}
