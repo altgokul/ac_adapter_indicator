@@ -1,7 +1,7 @@
 # Basic Makefile
 
 UUID = ac_adapter_indicator@nowhere.com
-BASE_MODULES = extension.js  Makefile  metadata.json  stylesheet.css
+BASE_MODULES = extension.js  metadata.json  stylesheet.css
 EXTRA_MODULES = 
 EXTRA_MEDIA = 
 TOLOCALIZE =  
@@ -25,7 +25,7 @@ all: extension
 clean:
 	rm -f ./schemas/gschemas.compiled
 
-#extension: ./schemas/gschemas.compiled $(MSGSRC:.po=.mo)
+extension: #./schemas/gschemas.compiled $(MSGSRC:.po=.mo)
 
 #./schemas/gschemas.compiled: ./schemas/org.gnome.shell.extensions.dash-to-dock.gschema.xml
 #	glib-compile-schemas ./schemas/
